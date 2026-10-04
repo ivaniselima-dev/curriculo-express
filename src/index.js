@@ -1,21 +1,17 @@
 import "dotenv/config";
 import express from "express";
-import { sequelize } from "./models/index.js";
+import models, { sequelize } from "./models/index.js";
 
 const app = express();
 
-const pessoas = [
-  { id: 1, nome: "Ivanise Lima", email: "ivanise.dev@gmail.com" },
-  { id: 2, nome: "Juarês Santos", email: "juares.santos@email.com" },
-];
-
-app.get("/pessoas", (req, res) => {
+app.get("/pessoas", async (req, res) => {
+  const pessoas = await models.Pessoa.findAll();
   return res.send(pessoas);
 });
 
-app.get("/pessoas/:id", (req, res) => {
-  const id = Number(req.params.id);
-  const pessoa = pessoas.find((p) => p.id === id);
+app.get("/pessoas/:id", async (req, res) => {
+  const pessoa = await models.Pessoa.findByPk(req.params.id);
+
   if (!pessoa) {
     return res.status(404).send({ erro: "Pessoa não encontrada" });
   }
@@ -25,8 +21,8 @@ app.get("/pessoas/:id", (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-sequelize.authenticate().then(() => {
-  console.log("Conectado ao banco de dados");
+sequelize.sync().then(() => {
+  console.log("Banco sincronizado");
 
   app.listen(port, () => {
     console.log(`Servidor rodando na porta ${port}`);
