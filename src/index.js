@@ -1,4 +1,6 @@
+import "dotenv/config";
 import express from "express";
+import { sequelize } from "./models/index.js";
 
 const app = express();
 
@@ -23,6 +25,14 @@ app.get("/pessoas/:id", (req, res) => {
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+sequelize.authenticate().then(() => {
+  console.log("Conectado ao banco de dados");
+
+  app.listen(port, () => {
+    console.log(`Servidor rodando na porta ${port}`);
+  });
 });
+
+import Sequelize from "sequelize";
+import pg from "pg";
+
