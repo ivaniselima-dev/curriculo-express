@@ -11,7 +11,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/pessoas", async (req, res) => {
-  const pessoas = await models.Pessoa.findAll();
+  const pessoas = await models.Pessoa.findAll({ order: [["id", "ASC"]] });
   return res.send(pessoas);
 });
 
