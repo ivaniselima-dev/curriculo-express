@@ -60,6 +60,25 @@ app.delete("/pessoas/:id", async (req, res) => {
   return res.status(204).send();
 });
 
+app.post("/experiencias", async (req, res) => {
+  const pessoa = await models.Pessoa.findByPk(req.body.pessoaId);
+
+  if (!pessoa) {
+    return res.status(404).send({ erro: "Pessoa não encontrada" });
+  }
+
+  const experiencia = await models.Experiencia.create({
+    empresa: req.body.empresa,
+    cargo: req.body.cargo,
+    dataInicio: req.body.dataInicio,
+    dataFim: req.body.dataFim,
+    descricao: req.body.descricao,
+    pessoaId: req.body.pessoaId,
+  });
+
+  return res.status(201).send(experiencia);
+});
+
 const port = process.env.PORT || 3000;
 
 sequelize.sync().then(() => {

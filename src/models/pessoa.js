@@ -17,6 +17,10 @@ const getPessoaModel = (sequelize, { DataTypes }) => {
     },
   });
 
+  Pessoa.associate = (models) => {
+    Pessoa.hasMany(models.Experiencia, { onDelete: "CASCADE" });
+  };
+
   return Pessoa;
 };
 
