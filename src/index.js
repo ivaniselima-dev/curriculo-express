@@ -79,6 +79,20 @@ app.post("/experiencias", async (req, res) => {
   return res.status(201).send(experiencia);
 });
 
+app.get("/pessoas/:id/experiencias", async (req, res) => {
+  const pessoa = await models.Pessoa.findByPk(req.params.id);
+
+  if (!pessoa) {
+    return res.status(404).send({ erro: "Pessoa não encontrada" });
+  }
+
+  const experiencias = await models.Experiencia.findAll({
+    where: { pessoaId: req.params.id },
+  });
+
+  return res.send(experiencias);
+});
+
 const port = process.env.PORT || 3000;
 
 sequelize.sync().then(() => {
