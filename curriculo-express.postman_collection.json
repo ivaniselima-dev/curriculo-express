@@ -1,0 +1,572 @@
+{
+  "info": {
+    "name": "Currículo Express",
+    "description": "Testes da API de currículos. Altere as variáveis da coleção (aba Variables) para escolher a pessoa ou o registro de cada comando.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://SEU-PROJETO.vercel.app"
+    },
+    {
+      "key": "pessoaId",
+      "value": "1"
+    },
+    {
+      "key": "experienciaId",
+      "value": "1"
+    },
+    {
+      "key": "formacaoId",
+      "value": "1"
+    },
+    {
+      "key": "projetoId",
+      "value": "1"
+    }
+  ],
+  "item": [
+    {
+      "name": "Pessoas",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Maria Teste\",\n  \"email\": \"maria@email.com\",\n  \"telefone\": \"81999990000\",\n  \"cidade\": \"Recife - PE\",\n  \"resumo\": \"Currículo de teste\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Alterar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"telefone\": \"81911112222\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Apagar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relacionamentos",
+      "item": [
+        {
+          "name": "Currículo completo da pessoa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/curriculo",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "curriculo"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Experiências da pessoa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "experiencias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Formações da pessoa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "formacoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Projetos da pessoa",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/pessoas/{{pessoaId}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pessoas",
+                "{{pessoaId}}",
+                "projetos"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Experiências profissionais",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"empresa\": \"Empresa Teste\",\n  \"cargo\": \"Analista\",\n  \"dataInicio\": \"2025-01-01\",\n  \"descricao\": \"Experiência de teste\",\n  \"pessoaId\": {{pessoaId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Alterar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cargo\": \"Analista Sênior\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Apagar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/experiencias/{{experienciaId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "experiencias",
+                "{{experienciaId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Formações acadêmicas",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"instituicao\": \"UNICAP\",\n  \"curso\": \"Curso Teste\",\n  \"nivel\": \"Tecnólogo\",\n  \"situacao\": \"Em andamento\",\n  \"pessoaId\": {{pessoaId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Alterar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"situacao\": \"Concluído\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Apagar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/formacoes/{{formacaoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "formacoes",
+                "{{formacaoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Projetos",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Criar",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projetos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nome\": \"Projeto Teste\",\n  \"descricao\": \"Projeto de teste\",\n  \"tecnologias\": \"Node.js, Express\",\n  \"pessoaId\": {{pessoaId}}\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Alterar",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tecnologias\": \"Node.js, Express, PostgreSQL\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Apagar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/projetos/{{projetoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "projetos",
+                "{{projetoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
